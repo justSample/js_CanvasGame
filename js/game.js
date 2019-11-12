@@ -20,7 +20,7 @@ class Game{
         this.HP = 100;
         this.score = 0;
         //Нажатие клавишь
-
+        new Input(this);
     }
 
     start()
