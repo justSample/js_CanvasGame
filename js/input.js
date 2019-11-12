@@ -23,6 +23,9 @@ class Input{
                 case 27:    //Escape
                     console.log("Escape");
                     break;
+                case 13:
+                    game.start();
+                    break;
             }
 
         });

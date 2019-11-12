@@ -13,6 +13,7 @@ class Game{
         this.gameWidth = gameWidth;
         this.gameHeight = gameHeight;
 
+        this.player = new Player(this);
         this.gameObjects = [];
 
         //Состояние игры
@@ -21,12 +22,13 @@ class Game{
         this.score = 0;
         //Нажатие клавишь
         new Input(this);
+        this.start();
     }
 
     start()
     {
         this.gameObjects =[
-
+            this.player,
 
 
         ]
