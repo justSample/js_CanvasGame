@@ -34,10 +34,10 @@ class Input{
 
             switch(event.keyCode){
                 case 37:    //Arrow Left
-                    player.stop(); 
+                    if(player.speed < 0) player.stop(); 
                     break;
                 case 39:    //Arrow Right
-                    player.stop(); 
+                    if(player.speed > 0) player.stop();
                     break;
             }
 
