@@ -16,16 +16,18 @@ class Player{
         this.image = document.getElementById("img_TimonIdle");
         this.imageIdleLeft = document.getElementById("img_TimonIdleLeft");
         this.imageRunRight = document.getElementById("img_TimonRunRight");
+        this.imageRunLeft = document.getElementById("img_TimonRunLeft");
 
         this.Animations = [
             this.image,
             this.imageIdleLeft,
-            this.imageRunRight
+            this.imageRunRight,
+            this.imageRunLeft
         ];
 
         console.log(this.Animations[2].width);
 
-        this.playerState = PLAYER_STATE.IdleLeft;
+        this.playerState = PLAYER_STATE.IdleRight;
 
         this.width = this.Animations[this.playerState].width;
         this.height = this.Animations[this.playerState].height;
@@ -46,7 +48,7 @@ class Player{
         this.gameWidth = game.gameWidth;
         this.gameHeight = game.gameHeight;
 
-        this.maxSpeed = 8;
+        this.maxSpeed = 3;
         this.speed = 0;
 
         this.position = {
@@ -57,7 +59,7 @@ class Player{
     }
 
     moveLeft(){
-        this.playerState = PLAYER_STATE.IdleLeft;
+        this.playerState = PLAYER_STATE.RunLeft;
         this.speed = -this.maxSpeed;
     }
 
