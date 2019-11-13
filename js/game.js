@@ -40,13 +40,14 @@ class Game{
     }
 
     draw(ctx)
-    {
-
+    {   
 
         this.gameObjects.forEach((object) => object.draw(ctx));
     }
 
     physics(){
+
+        if(this.gameState === GAME_STATE.PAUSED) return;
 
         this.gameObjects.forEach((object) => object.physics());
 

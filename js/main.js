@@ -17,7 +17,7 @@ function gameLoop(timeStamp)
 
     ctx.clearRect(0,0,GAME_WIDTH,GAME_HEIGHT);
 
-    //game.physics();
+    game.physics();
     game.update(deltaTime);
     game.draw(ctx);
     
