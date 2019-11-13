@@ -22,6 +22,11 @@ class Game{
         this.score = 0;
         //Нажатие клавишь
         new Input(this.player,this);
+
+        for(let i = 1;i < 4;i++){
+            console.log("38.25 * " + i + " = " + (38.25 * i) );
+        }
+
         this.start();
     }
 
