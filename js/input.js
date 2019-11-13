@@ -1,18 +1,18 @@
 class Input{
 
-    constructor(game){
+    constructor(player,game){
 
         document.addEventListener('keydown',event =>{
 
             switch(event.keyCode){
                 case 37:    //Arrow Left
-                    console.log("Left");   
+                    player.moveLeft();  
                     break;
                 case 38:    //Arrow Up
                     console.log("Up");
                     break;
                 case 39:    //Arrow Right
-                    console.log("Right");
+                    player.moveRight();  
                     break;
                 case 40:    //Arrow Down
                     console.log("Down");
@@ -21,7 +21,7 @@ class Input{
                     console.log("Space");
                     break;
                 case 27:    //Escape
-                    console.log("Escape");
+                    game.togglePause();
                     break;
                 case 13:
                     game.start();
@@ -34,10 +34,10 @@ class Input{
 
             switch(event.keyCode){
                 case 37:    //Arrow Left
-                    console.log("Left key up");   
+                    player.stop(); 
                     break;
                 case 39:    //Arrow Right
-                    console.log("Right key up");
+                    player.stop(); 
                     break;
             }
 

@@ -5,6 +5,8 @@ class Player{
         this.width = 150;
         this.height = 20;
 
+        this.game = game;
+
         this.gameWidth = game.gameWidth;
 
         this.maxSpeed = 8;
@@ -30,7 +32,7 @@ class Player{
     }
 
     draw(ctx){
-        ctx.fillStyle = "black";
+        ctx.fillStyle = "blue";
         ctx.fillRect(this.position.x,this.position.y,this.width, this.height);
     }
 

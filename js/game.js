@@ -17,11 +17,11 @@ class Game{
         this.gameObjects = [];
 
         //Состояние игры
-        this.gameState = GAME_STATE.MENU;
+        this.gameState = GAME_STATE.RUNNING;
         this.HP = 100;
         this.score = 0;
         //Нажатие клавишь
-        new Input(this);
+        new Input(this.player,this);
         this.start();
     }
 
@@ -29,23 +29,31 @@ class Game{
     {
         this.gameObjects =[
             this.player,
-
-
         ]
     }
 
     update(deltaTime)
     {
+        if(this.gameState === GAME_STATE.PAUSED) return;
+
         this.gameObjects.forEach((object) => object.update(deltaTime));
     }
 
     draw(ctx)
     {
+
+
         this.gameObjects.forEach((object) => object.draw(ctx));
     }
 
     togglePause()
     {
+
+        if(this.gameState === GAME_STATE.RUNNING){
+            this.gameState = GAME_STATE.PAUSED;
+        }else if(this.gameState === GAME_STATE.PAUSED){
+            this.gameState = GAME_STATE.RUNNING;
+        }
 
     }
 
