@@ -2,14 +2,26 @@ class Player{
 
     constructor(game){
 
-        this.width = 150;
-        this.height = 20;
+        this.image = document.getElementById("img_TimonIdle");
+
+        this.width = this.image.width;
+        this.height = this.image.height;
+
+        console.log(this.image.width);
+        console.log(this.image.height);
+
+        this.isRight = true;
 
         this.dx = 0;
         this.dy = 0;
 
         this.maxSpeedPhysics = 10;
         this.speedPhysics = 0.3;
+
+        this.frameIndex = 0; //Номер фрейма
+        this.tickCount = 0; //Кол-во обновлений прошедшие с первого выхода
+        this.ticksPerFrame = 15 || 0; //Кол-во обновлений должно пройти
+        this.numberOfFrames = 4;
 
         this.game = game;
 
@@ -38,11 +50,35 @@ class Player{
     }
 
     draw(ctx){
-        ctx.fillStyle = "blue";
-        ctx.fillRect(this.position.x,this.position.y,this.width, this.height);
+
+        ctx.drawImage(
+            this.image,
+            this.frameIndex * this.width / this.numberOfFrames,
+            0,
+            this.width / this.numberOfFrames,
+            this.height,
+            this.position.x,
+            this.position.y,
+            this.width / this.numberOfFrames,
+            this.height
+        )
+        
+        //ctx.fillStyle = "blue";
+        //ctx.fillRect(this.position.x,this.position.y,this.width, this.height);
     }
 
     update(deltaTime){
+
+        this.tickCount++;
+ 
+        if (this.tickCount > this.ticksPerFrame) {
+            this.tickCount = 0;
+            if (this.frameIndex < this.numberOfFrames - 1) {
+                this.frameIndex++;
+            } else {
+                this.frameIndex = 0;
+            }
+        }
 
         this.position.x += this.speed;
 
@@ -63,9 +99,9 @@ class Player{
         }
     }
 
+
     jump()
     {
         this.dy += -10;
     }
-
 }
