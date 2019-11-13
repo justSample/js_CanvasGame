@@ -46,6 +46,12 @@ class Game{
         this.gameObjects.forEach((object) => object.draw(ctx));
     }
 
+    physics(){
+
+        this.gameObjects.forEach((object) => object.physics());
+
+    }
+
     togglePause()
     {
 
