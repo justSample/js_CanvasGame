@@ -151,11 +151,7 @@ class Player{
             else if(this.speed === -this.maxSpeed){
                 this.playerState = PLAYER_STATE.JumpLeft;
             }
-        }
-
-        console.log(this.isJump);
-
-        
+        }  
     }
 
     physics()
