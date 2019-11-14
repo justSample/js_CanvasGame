@@ -14,6 +14,7 @@ class Game{
         this.gameHeight = gameHeight;
 
         this.player = new Player(this);
+        this.background = new Background(this);
         this.gameObjects = [];
 
         //Состояние игры
@@ -33,7 +34,8 @@ class Game{
     start()
     {
         this.gameObjects =[
-            this.player,
+            this.background,
+            this.player
         ]
     }
 

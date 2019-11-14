@@ -7,7 +7,8 @@ const PLAYER_STATE = {
     JumpRightUp: 4,
     JumpRightDown: 5,
     JumpLeftUp: 6,
-    JumpLeftDown: 7
+    JumpLeftDown: 7,
+    Dead: 8
 }
 
 class Player{
