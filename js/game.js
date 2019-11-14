@@ -13,6 +13,7 @@ class Game{
         this.gameWidth = gameWidth;
         this.gameHeight = gameHeight;
 
+        //Создание игровых объектов
         this.player = new Player(this);
         this.background = new Background(this);
         this.gameObjects = [];
@@ -21,13 +22,11 @@ class Game{
         this.gameState = GAME_STATE.RUNNING;
         this.HP = 100;
         this.score = 0;
+
         //Нажатие клавишь
         new Input(this.player,this);
 
-        for(let i = 1;i < 4;i++){
-            console.log("38.25 * " + i + " = " + (38.25 * i) );
-        }
-
+        //Пока что старт игры
         this.start();
     }
 

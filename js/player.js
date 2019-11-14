@@ -56,7 +56,7 @@ class Player{
         this.speed = 0;
 
         this.position = {
-            x: game.gameWidth / 2 - this.width / this.numberOfFrames,
+            x: 0,
             y: game.gameHeight - this.height - 300,
         }
         
@@ -131,7 +131,9 @@ class Player{
 
     physics()
     {
+
         this.position.y += this.dy;
+        
 
         if(this.position.y <= this.gameHeight - this.Animations[this.playerState].height){ 
             this.dy += this.dy <= this.maxSpeedPhysics ? this.speedPhysics : 0;
