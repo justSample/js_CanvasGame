@@ -4,11 +4,9 @@ const PLAYER_STATE = {
     IdleLeft: 1,
     RunRight: 2,
     RunLeft: 3,
-    JumpRightUp: 4,
-    JumpRightDown: 5,
-    JumpLeftUp: 6,
-    JumpLeftDown: 7,
-    Dead: 8
+    JumpRight: 4,
+    JumpLeft: 5,
+    Dead: 6
 }
 
 class Player{
@@ -18,14 +16,20 @@ class Player{
         //Animations
         this.image = document.getElementById("img_TimonIdle");
         this.imageIdleLeft = document.getElementById("img_TimonIdleLeft");
+
         this.imageRunRight = document.getElementById("img_TimonRunRight");
         this.imageRunLeft = document.getElementById("img_TimonRunLeft");
+
+        this.imageJumpRight = document.getElementById("img_TimonJumpRight");
+        this.imageJumpLeft = document.getElementById("img_TimonJumpLeft");
 
         this.Animations = [
             this.image,
             this.imageIdleLeft,
             this.imageRunRight,
-            this.imageRunLeft
+            this.imageRunLeft,
+            this.imageJumpRight,
+            this.imageJumpLeft
         ];
 
         this.playerState = PLAYER_STATE.IdleRight;
@@ -54,6 +58,8 @@ class Player{
 
         this.maxSpeed = 3;
         this.speed = 0;
+
+        this.isJump = false;
 
         this.position = {
             x: 0,
@@ -88,6 +94,11 @@ class Player{
             
             this.numberOfFrames = 9;
 
+        }else if(this.playerState === PLAYER_STATE.JumpRight || this.playerState === PLAYER_STATE.JumpLeft){
+
+            this.frameIndex = 0;
+            this.numberOfFrames = 1;
+
         }
 
         //Отрисовка кадров
@@ -118,23 +129,40 @@ class Player{
             }
         }
 
-
         //Чтобы игрок не вышел за зону игры
         this.position.x += this.speed;
 
-        if(this.position.y + this.Animations[this.playerState].height >= this.gameHeight) this.position.y = this.gameHeight - this.Animations[this.playerState].height;
+        if(this.position.y + this.Animations[this.playerState].height >= this.gameHeight){
+            this.position.y = this.gameHeight - this.Animations[this.playerState].height;
+            this.dy = 0;
+        }
         if(this.position.x <= 0 ) this.position.x = 0;
         if(this.position.x + this.Animations[this.playerState].width / this.numberOfFrames >= this.gameWidth ) this.position.x = this.gameWidth - this.Animations[this.playerState].width / this.numberOfFrames;
+
+        if(this.dy != 0)
+            this.isJump = true;
+        else
+            this.isJump = false;
+
+        if(this.isJump){
+            if(this.speed === 0 || this.speed === this.maxSpeed){
+                this.playerState = PLAYER_STATE.JumpRight;
+            }
+            else if(this.speed === -this.maxSpeed){
+                this.playerState = PLAYER_STATE.JumpLeft;
+            }
+        }
+
+        console.log(this.isJump);
 
         
     }
 
     physics()
     {
-
         this.position.y += this.dy;
+        //console.log(this.dy);
         
-
         if(this.position.y <= this.gameHeight - this.Animations[this.playerState].height){ 
             this.dy += this.dy <= this.maxSpeedPhysics ? this.speedPhysics : 0;
         }else{
