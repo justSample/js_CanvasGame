@@ -59,6 +59,8 @@ class Player{
         this.maxSpeed = 3;
         this.speed = 0;
 
+        this.Health = 100;
+
         this.isJump = false;
 
         this.position = {
