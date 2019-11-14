@@ -26,6 +26,8 @@ class Game{
         //Нажатие клавишь
         new Input(this.player,this);
 
+        //document.getElementById("backgroundMusic").play();
+
         //Пока что старт игры
         this.start();
     }

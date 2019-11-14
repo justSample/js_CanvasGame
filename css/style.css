@@ -20,6 +20,11 @@ img
     display: none;
 }
 
+audio
+{
+    display: none;
+}
+
 canvas
 {
     margin: 0 auto;

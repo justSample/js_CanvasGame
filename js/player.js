@@ -137,7 +137,7 @@ class Player{
             this.dy = 0;
         }
         if(this.position.x <= 0 ) this.position.x = 0;
-        if(this.position.x + this.Animations[this.playerState].width / this.numberOfFrames >= this.gameWidth ) this.position.x = this.gameWidth - this.Animations[this.playerState].width / this.numberOfFrames;
+        //if(this.position.x + this.Animations[this.playerState].width / this.numberOfFrames >= this.gameWidth ) this.position.x = this.gameWidth - this.Animations[this.playerState].width / this.numberOfFrames;
 
         if(this.dy != 0)
             this.isJump = true;
