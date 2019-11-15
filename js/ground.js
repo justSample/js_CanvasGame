@@ -8,8 +8,8 @@ class Ground{
 
         this.position = position;
 
-        this.width = 50;
-        this.height = 30;
+        this.width = 75;
+        this.height = 50;
         
     }
 
@@ -26,6 +26,8 @@ class Ground{
             this.width,
             this.height
         );
+
+        isCollided(this.game.player,this);
 
     }
 

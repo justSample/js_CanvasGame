@@ -20,9 +20,6 @@ class Game{
         this.HP = 100;
         this.score = 0;
 
-        //Нажатие клавишь
-        new Input(this.player,this);
-
         //document.getElementById("backgroundMusic").play();
 
         //Пока что старт игры
@@ -35,11 +32,7 @@ class Game{
         this.player = new Player(this);
         this.background = new Background(this);
         this.timer = new Timer();
-        let grounds = [];
-
-        for(let i = 0; i < 10 ;i++){
-            grounds.push(new Ground(this,{x: i * 60, y: 30}));
-        }
+        let grounds = buildLevel(this,MyLevel);
 
         this.gameObjects =[
             this.background,
@@ -51,6 +44,9 @@ class Game{
             this.timer.clock();
             this.player.Health -= 1;
         },1000);
+
+        //Нажатие клавишь
+        new Input(this.player,this);
 
     }
 
