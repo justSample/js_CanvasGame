@@ -15,8 +15,8 @@ function buildLevel(game,level) {
             if(ground === 1){
 
                 let position = {
-                    x: 50 + game.gameWidth / 10 * groundIndex,
-                    y: 30 + game.gameHeight / 3.3 * rowIndex
+                    x: 75 + game.gameWidth / 10 * groundIndex,
+                    y: 320 + game.gameHeight / 6.4 * rowIndex
                 };
 
                 grounds.push(new Ground(game,position));

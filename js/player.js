@@ -64,6 +64,9 @@ class Player{
 
         this.isJump = false;
 
+        this.xPrev = 0;
+        this.yPrev = 0;
+
         this.position = {
             x: 0,
             y: game.gameHeight - this.height,
@@ -141,16 +144,12 @@ class Player{
         if(this.position.y + this.Animations[this.playerState].height >= this.gameHeight){
             this.position.y = this.gameHeight - this.Animations[this.playerState].height;
             this.dy = 0;
+            this.isJump = false;
         }
 
         if(this.position.x <= 0 ) this.position.x = 0;
 
         //if(this.position.x + this.Animations[this.playerState].width / this.numberOfFrames >= this.gameWidth ) this.position.x = this.gameWidth - this.Animations[this.playerState].width / this.numberOfFrames;
-
-        if(this.dy != 0)
-            this.isJump = true;
-        else
-            this.isJump = false;
 
         if(this.isJump){
             if(this.speed === 0 || this.speed === this.maxSpeed){
@@ -164,6 +163,10 @@ class Player{
 
     physics()
     {
+
+        this.xPrev = this.position.x;
+        this.yPrev = this.position.y;
+
         this.position.y += this.dy;
         
         if(this.position.y <= this.gameHeight - this.Animations[this.playerState].height){ 
@@ -175,6 +178,9 @@ class Player{
 
     jump()
     {
-        this.dy += -10.2;
+        if(!this.isJump){
+            this.dy += -10.2;
+            this.isJump = true;
+        }
     }
 }
