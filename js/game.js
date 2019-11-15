@@ -13,10 +13,6 @@ class Game{
         this.gameWidth = gameWidth;
         this.gameHeight = gameHeight;
 
-        //Создание игровых объектов
-        this.player = new Player(this);
-        this.background = new Background(this);
-        this.timer = new Timer();
         this.gameObjects = [];
 
         //Состояние игры
@@ -29,16 +25,25 @@ class Game{
 
         //document.getElementById("backgroundMusic").play();
 
-        
-
         //Пока что старт игры
         this.start();
     }
 
     start()
     {
+        //Создание игровых объектов
+        this.player = new Player(this);
+        this.background = new Background(this);
+        this.timer = new Timer();
+        let grounds = [];
+
+        for(let i = 0; i < 10 ;i++){
+            grounds.push(new Ground(this,{x: i * 60, y: 30}));
+        }
+
         this.gameObjects =[
             this.background,
+            ...grounds,
             this.player
         ]
 
