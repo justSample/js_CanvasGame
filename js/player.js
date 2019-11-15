@@ -31,7 +31,7 @@ class Player{
             this.imageJumpRight,
             this.imageJumpLeft
         ];
-
+        //Изначальное состояние игрока
         this.playerState = PLAYER_STATE.IdleRight;
         
         //fix me
@@ -53,7 +53,8 @@ class Player{
 
         this.game = game;
 
-        this.gameWidth = game.gameWidth;
+        //fix me
+        this.gameWidth = game.gameWidth / this.numberOfFrames;
         this.gameHeight = game.gameHeight;
 
         this.maxSpeed = 3;
@@ -65,7 +66,7 @@ class Player{
 
         this.position = {
             x: 0,
-            y: game.gameHeight - this.height - 300,
+            y: game.gameHeight - this.height,
         }
         
     }
@@ -119,6 +120,10 @@ class Player{
 
     update(deltaTime){
 
+        //Обновление ширины и высоты для корректной работы коллизии 
+        this.width = this.Animations[this.playerState].width / this.numberOfFrames;
+        this.height = this.Animations[this.playerState].height;
+
         //Через какое время нужно показывать новый фрейм
         this.tickCount++;
  
@@ -131,14 +136,15 @@ class Player{
             }
         }
 
-        //Чтобы игрок не вышел за зону игры
         this.position.x += this.speed;
 
         if(this.position.y + this.Animations[this.playerState].height >= this.gameHeight){
             this.position.y = this.gameHeight - this.Animations[this.playerState].height;
             this.dy = 0;
         }
+
         if(this.position.x <= 0 ) this.position.x = 0;
+
         //if(this.position.x + this.Animations[this.playerState].width / this.numberOfFrames >= this.gameWidth ) this.position.x = this.gameWidth - this.Animations[this.playerState].width / this.numberOfFrames;
 
         if(this.dy != 0)
@@ -159,7 +165,6 @@ class Player{
     physics()
     {
         this.position.y += this.dy;
-        //console.log(this.dy);
         
         if(this.position.y <= this.gameHeight - this.Animations[this.playerState].height){ 
             this.dy += this.dy <= this.maxSpeedPhysics ? this.speedPhysics : 0;
@@ -170,6 +175,6 @@ class Player{
 
     jump()
     {
-        this.dy += -10;
+        this.dy += -10.2;
     }
 }
