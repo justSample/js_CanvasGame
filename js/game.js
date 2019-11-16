@@ -32,7 +32,17 @@ class Game{
         this.player = new Player(this);
         this.background = new Background(this);
         this.timer = new Timer();
+
+
         let grounds = buildLevel(this,MyLevel);
+        /* Nothing. You dont't see this!.
+        this.grounds = grounds.filter( function(obj) {
+                if(obj.isHide === false || obj.isHide === true)
+                    return obj;
+                else
+                    return null;
+        }  )
+        */
 
         this.gameObjects =[
             this.background,
@@ -55,6 +65,9 @@ class Game{
         if(this.gameState === GAME_STATE.PAUSED) return;
 
         this.gameObjects.forEach((object) => object.update(deltaTime));
+
+        //this.grounds.forEach((obj) => obj.writeHide()); //This you don't see again!.
+
     }
 
     draw(ctx)

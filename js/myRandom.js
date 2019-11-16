@@ -1,3 +1,4 @@
-function getRandomNumber(max) {
-    return Math.floor(Math.random() * max);
-}
+function getRandomNumber(min, max) {
+    let intRdm = (Math.floor(Math.random() * (max - min) ) + min);
+    return intRdm;
+  }

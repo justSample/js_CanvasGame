@@ -7,6 +7,7 @@ class Catterpilar{
         this.image = document.getElementById("img_catterpilar");
 
         this.position = position;
+        this.isHide = false;
 
         this.width = 30;
         this.height = 30;
@@ -20,7 +21,7 @@ class Catterpilar{
             this.game.player.plusHeath(5);
         }
 
-    } //Nothing
+    }
 
     draw(ctx){
 
@@ -32,9 +33,16 @@ class Catterpilar{
             this.height
         );
 
-        //isCollided(this.game.player,this);
-
     }
 
     physics(){} //Nothing
+
+    writeHide(){
+        if(this.position.x < 0){
+            this.isHide = true;
+        }else{
+            this.isHide = false;
+        }
+        console.log(this.isHide);
+    }
 }

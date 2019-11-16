@@ -17,9 +17,6 @@ class Input{
                 case 40:    //Arrow Down
                     console.log("Down");
                     break;
-                case 32:    //Space
-                    //player.jump();
-                    break;
                 case 27:    //Escape
                     game.togglePause();
                     break;

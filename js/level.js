@@ -1,21 +1,25 @@
 const MyLevel = [
-    [0,0,0,0,0,0,0,0,0,0],
-    [1,1,1,1,1,1,1,1,0,0],
-    [1,1,1,1,1,1,1,1,0,0],
-    [1,1,1,1,1,1,1,1,0,0],
-    [0,0,0,0,0,0,0,0,0,0]
+    [1,1,1,1,1,1,1,1],
+    [1,1,1,1,1,1,1,1],
+    [1,1,1,1,1,1,1,1],
+    [1,1,1,1,1,1,1,1],
+    [0,0,0,0,0,0,0,0]
 ];
+
+var Catterpilars = [];
 
 function buildLevel(game,level,catterpilar) {
     
     let grounds = [];
     let groundCount = 0;
 
+    while(groundCount < 11){
     level.forEach((row,rowIndex) =>{
+        let thisRowIndex = rowIndex;
         row.forEach((ground,groundIndex) => {
             
             if(ground != 0)
-                ground = getRandomNumber(2);
+                ground = getRandomNumber(0,2);
 
             if(ground === 1){
 
@@ -43,17 +47,21 @@ function buildLevel(game,level,catterpilar) {
                     y: 270 + game.gameHeight / 5.4 * rowIndex
                 };
 
+
                 grounds.push(new Catterpilar(game,position));
+                
 
             }
+            rowIndex = thisRowIndex;
         });
 
     });
 
-    if(groundCount < 15){
-        buildLevel(game,level,catterpilar)
+    if(groundCount < 11){
+        groundCount = 0;
+        grounds = [];
     }
 
+}
     return grounds;
-
 }
