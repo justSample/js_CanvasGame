@@ -8,14 +8,12 @@ class Ground{
 
         this.position = position;
 
-        this.width = 75;
-        this.height = 50;
+        this.width = 80;
+        this.height = 30;
         
     }
 
-    update(deltaTime){
-
-    }
+    update(deltaTime){} //Nothing
 
     draw(ctx){
 

@@ -75,37 +75,21 @@ class Player{
     }
 
     moveLeft(){
-        this.playerState = PLAYER_STATE.RunLeft;
         this.speed = -this.maxSpeed;
     }
 
     moveRight(){
-        this.playerState = PLAYER_STATE.RunRight;
         this.speed = this.maxSpeed;
     }
 
     stop(){
+
         this.frameIndex = 0;
-        this.playerState = PLAYER_STATE.IdleRight;
         this.speed = 0;
+
     }
 
     draw(ctx){
-
-        if(this.playerState === PLAYER_STATE.IdleRight || this.playerState === PLAYER_STATE.IdleLeft){
-            
-            this.numberOfFrames = 4;
-
-        }else if(this.playerState === PLAYER_STATE.RunRight || this.playerState === PLAYER_STATE.RunLeft){
-            
-            this.numberOfFrames = 9;
-
-        }else if(this.playerState === PLAYER_STATE.JumpRight || this.playerState === PLAYER_STATE.JumpLeft){
-
-            this.frameIndex = 0;
-            this.numberOfFrames = 1;
-
-        }
 
         //Отрисовка кадров
         ctx.drawImage(
@@ -122,6 +106,10 @@ class Player{
     }
 
     update(deltaTime){
+
+        //Update animations
+        this.playerStateUpdate();
+        this.animationsNumberFrameUpdate();
 
         //Обновление ширины и высоты для корректной работы коллизии 
         this.width = this.Animations[this.playerState].width / this.numberOfFrames;
@@ -141,29 +129,21 @@ class Player{
 
         this.position.x += this.speed;
 
+        //Стенка внизу. Чтобы не падал в пропасть
         if(this.position.y + this.Animations[this.playerState].height >= this.gameHeight){
             this.position.y = this.gameHeight - this.Animations[this.playerState].height;
             this.dy = 0;
             this.isJump = false;
         }
 
+        //Чтобы не выходил за пределы экрана слева
         if(this.position.x <= 0 ) this.position.x = 0;
 
-        //if(this.position.x + this.Animations[this.playerState].width / this.numberOfFrames >= this.gameWidth ) this.position.x = this.gameWidth - this.Animations[this.playerState].width / this.numberOfFrames;
-
-        if(this.isJump){
-            if(this.speed === 0 || this.speed === this.maxSpeed){
-                this.playerState = PLAYER_STATE.JumpRight;
-            }
-            else if(this.speed === -this.maxSpeed){
-                this.playerState = PLAYER_STATE.JumpLeft;
-            }
-        }  
     }
 
     physics()
     {
-
+        //Записывается позиция до воздействия физики и update
         this.xPrev = this.position.x;
         this.yPrev = this.position.y;
 
@@ -181,6 +161,49 @@ class Player{
         if(!this.isJump){
             this.dy += -10.2;
             this.isJump = true;
+        }
+    }
+
+    animationsNumberFrameUpdate(){
+
+        //Idle Animations
+        if(this.playerState === PLAYER_STATE.IdleRight || this.playerState === PLAYER_STATE.IdleLeft){
+            
+            this.numberOfFrames = 4;
+
+        }//Run Animations
+        else if(this.playerState === PLAYER_STATE.RunRight || this.playerState === PLAYER_STATE.RunLeft){
+            
+            this.numberOfFrames = 9;
+
+        }//Jump animation
+        else if(this.playerState === PLAYER_STATE.JumpRight || this.playerState === PLAYER_STATE.JumpLeft && this.isJump){
+
+            this.frameIndex = 0;
+            this.numberOfFrames = 1;
+
+        }
+
+    }
+
+    playerStateUpdate(){
+
+        if(this.isJump){
+            if(this.speed === 0 || this.speed === this.maxSpeed){
+                this.playerState = PLAYER_STATE.JumpRight;
+            }
+            else if(this.speed === -this.maxSpeed){
+                this.playerState = PLAYER_STATE.JumpLeft;
+            }
+        }
+        else if(this.speed === this.maxSpeed){
+            this.playerState = PLAYER_STATE.RunRight;
+        }
+        else if(this.speed === -this.maxSpeed){
+            this.playerState = PLAYER_STATE.RunLeft;
+        }
+        else if(this.speed === 0){
+            this.playerState = PLAYER_STATE.IdleRight;
         }
     }
 }

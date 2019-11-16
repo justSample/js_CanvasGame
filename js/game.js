@@ -62,17 +62,20 @@ class Game{
 
         this.gameObjects.forEach((object) => object.draw(ctx));
 
-        //Отображение времени
+        //Отображение
         if(this.gameState == GAME_STATE.RUNNING){
+            //Фона
             ctx.rect(0,0,110,50);
             ctx.fillStyle = "rgba(0,0,0,1)";
             ctx.fill();
-        
+            
+            //Времени
             ctx.font = "16px Arial";
             ctx.fillStyle = "white";
             ctx.textAlign = "left";
             ctx.fillText("Min: " + this.timer.Time.min + " : Sec: " + this.timer.Time.sec,0, 16);
-
+            
+            //Здоровья игрока
             ctx.font = "16px Arial";
             ctx.fillStyle = "white";
             ctx.textAlign = "left";
@@ -96,34 +99,6 @@ class Game{
             this.gameState = GAME_STATE.PAUSED;
         }else if(this.gameState === GAME_STATE.PAUSED){
             this.gameState = GAME_STATE.RUNNING;
-        }
-
-    }
-
-    displayOnScreen(GAME_STATE, boxX,boxY,sizeBoxX,sizeBoxY, color, textFont,textColor,textAlign,text,textPosX,textPosY){
-        if(this.gameState == GAME_STATE){
-            ctx.rect(boxX,boxY,sizeBoxX,sizeBoxY);
-            ctx.fillStyle = color;
-            ctx.fill();
-        
-            ctx.font = textFont;
-            ctx.fillStyle = textColor;
-            ctx.textAlign = textAlign;
-            ctx.fillText(text,textPosX,textPosY);
-        }
-
-    }
-
-    displayOnScreen(GAME_STATE, boxX,boxY,sizeBoxX,sizeBoxY, colorBox,text,textPosX,textPosY){
-        if(this.gameState == GAME_STATE){
-            ctx.rect(boxX,boxY,sizeBoxX,sizeBoxY);
-            ctx.fillStyle = colorBox;
-            ctx.fill();
-        
-            ctx.font = "16px Arial";
-            ctx.fillStyle = "white";
-            ctx.textAlign = "left";
-            ctx.fillText(text,textPosX,textPosY);
         }
 
     }
