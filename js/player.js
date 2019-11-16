@@ -206,4 +206,15 @@ class Player{
             this.playerState = PLAYER_STATE.IdleRight;
         }
     }
+
+    plusHeath(num){
+
+        if((this.Health + num) > 100){
+            this.Health = 100;
+        }else{
+            this.Health += num;
+        }
+
+    }
+
 }

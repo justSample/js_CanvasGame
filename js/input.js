@@ -9,7 +9,7 @@ class Input{
                     player.moveLeft();  
                     break;
                 case 38:    //Arrow Up
-                    console.log("Up");
+                    player.jump();
                     break;
                 case 39:    //Arrow Right
                     player.moveRight();  
@@ -18,7 +18,7 @@ class Input{
                     console.log("Down");
                     break;
                 case 32:    //Space
-                    player.jump();
+                    //player.jump();
                     break;
                 case 27:    //Escape
                     game.togglePause();
