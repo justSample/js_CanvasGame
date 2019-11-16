@@ -102,7 +102,7 @@ class Player{
             this.position.y,//Позиция по y
             this.Animations[this.playerState].width / this.numberOfFrames,//Корректно отображает нужный нам кадр по ширине
             this.Animations[this.playerState].height//Корректно отображает нужный нам кадр по высоте
-        )
+        );
     }
 
     update(deltaTime){

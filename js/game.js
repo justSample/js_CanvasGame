@@ -32,6 +32,7 @@ class Game{
         this.player = new Player(this);
         this.background = new Background(this);
         this.timer = new Timer();
+        this.enemy = new Enemy(this);
 
 
         let grounds = buildLevel(this,MyLevel);
@@ -47,6 +48,7 @@ class Game{
         this.gameObjects =[
             this.background,
             ...grounds,
+            this.enemy,
             this.player
         ]
 
