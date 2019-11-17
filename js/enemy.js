@@ -34,7 +34,7 @@ class Enemy{
         this.speed = 1;
 
         this.position = {
-            x: 100,
+            x: 200,
             y: this.game.gameHeight - this.height 
         }
 
@@ -125,7 +125,7 @@ class Enemy{
         if(CollisionDetection(this.game.player,this)){
 
             if(this.firstAttack){
-                this.game.player.minusHealth(10);
+                this.game.player.minusHealth(30);
                 this.firstAttack = false;
             }
 
@@ -134,10 +134,9 @@ class Enemy{
             }else{
                 this.ticksAttack++;
             }
-            console.log(this.ticksAttack);
             
             if(this.ticksAttack === 60 || this.ticksAttack === 0){
-                this.game.player.minusHealth(10);
+                this.game.player.minusHealth(30);
                 this.ticksAttack = 0;
             }
             }else{

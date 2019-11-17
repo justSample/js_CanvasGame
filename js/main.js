@@ -2,10 +2,13 @@ let btn = document.getElementById("this-btn_start");
 let inputText = document.getElementById("inputText");
 let hide = document.getElementsByTagName('div');
 //console.log(hide);
+var FirstTime = true;
 
 function BeginPlay() {
 
-    
+    btn.removeEventListener("click",BeginPlay);
+
+    if(FirstTime){
     if(inputText.value.length <= 2) {
         alert("Имя должно быть больше 3-ёх символов");
         return;
@@ -13,14 +16,24 @@ function BeginPlay() {
         alert("Имя должно быть меньше 20-ти символов");
         return;
     }else{
-        var NamePlayer = document.createElement('img');
-        NamePlayer.id = "playerName";
-        NamePlayer.innerHTML = inputText.value;
-        document.body.appendChild(NamePlayer);
+        if(FirstTime){
+            var NamePlayer = document.createElement('img');
+            NamePlayer.id = "playerName";
+            NamePlayer.innerHTML = inputText.value;
+            document.body.appendChild(NamePlayer);
+        }
     }
 
     for(let i = 0;i != hide.length;){
         hide[i].parentNode.removeChild(hide[i]);
+    }
+    }else{
+        FirstTime = false;
+        hide = document.getElementsByTagName('div');
+
+        for(let i = 0;i != hide.length;){
+            hide[i].parentNode.removeChild(hide[i]);
+        }
     }
 
 let cns = document.createElement('canvas');

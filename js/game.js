@@ -57,8 +57,13 @@ class Game{
         ]
 
         setInterval(() => {
+
+            if(this.gameState === GAME_STATE.GAME_OVER ||
+                this.gameState === GAME_STATE.PAUSED) return;
+
             this.timer.clock();
             this.player.minusHealth(1);
+
         },1000);
 
         //Нажатие клавишь
@@ -68,7 +73,8 @@ class Game{
 
     update(deltaTime)
     {
-        if(this.gameState === GAME_STATE.PAUSED) return;
+        if(this.gameState === GAME_STATE.PAUSED ||
+            this.gameState === GAME_STATE.GAME_OVER) return;
 
         this.gameObjects.forEach((object) => object.update(deltaTime));
 
@@ -81,7 +87,7 @@ class Game{
         this.gameObjects.forEach((object) => object.draw(ctx));
 
         //Отображение
-        if(this.gameState == GAME_STATE.RUNNING){
+        if(this.gameState != GAME_STATE.GAME_OVER){
 
             //background
             ctx.rect(0,0,160,90);
@@ -119,7 +125,8 @@ class Game{
 
     physics(){
 
-        if(this.gameState === GAME_STATE.PAUSED) return;
+        if(this.gameState === GAME_STATE.PAUSED ||
+            this.gameState === GAME_STATE.GAME_OVER) return;
 
         this.gameObjects.forEach((object) => object.physics());
 

@@ -222,7 +222,7 @@ class Player{
 
         if((this.Health - num) < 0){
             this.Health = 0;
-            this.game.start();
+            this.Dead();
         }else{
             this.Health -= num;
         }
@@ -230,8 +230,33 @@ class Player{
     }
 
     Dead(){
+        FirstTime = false;
 
-        this.game.start();
+        this.game.gameState = GAME_STATE.GAME_OVER;
+
+        let canvas = document.getElementById("gameScreen");
+        canvas.parentNode.removeChild(canvas);
+
+        let discription = document.createElement('div');
+
+        discription.className = "info gameName";
+        discription.innerHTML = "Вы проиграли! </br> Хотите сыграть ещё?";
+
+        document.body.appendChild(discription);
+
+        let divBtn = document.createElement('div');
+
+        divBtn.className = "info btn";
+        document.body.appendChild(divBtn);
+
+        let btn = document.createElement('button');
+
+        btn.id = "this-btn_start";
+        btn.innerHTML = "Start again!";
+
+        btn.onclick = BeginPlay;
+        
+        divBtn.appendChild(btn);
 
     }
 
