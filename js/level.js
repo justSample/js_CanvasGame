@@ -12,6 +12,7 @@ function buildLevel(game,level,catterpilar) {
     
     let grounds = [];
     let groundCount = 0;
+    let visibleCatter = 0;
 
     while(groundCount < 11){
     level.forEach((row,rowIndex) =>{
@@ -39,7 +40,19 @@ function buildLevel(game,level,catterpilar) {
             ground = 2;
 
           }
-            
+          var isVisible = true;
+          let rdmNumber = getRandomNumber(0,2);
+          if(rdmNumber == 1){
+            if(visibleCatter < 2){
+            isVisible = true;
+            visibleCatter++;
+            }else{
+                isVisible = false;
+            }
+          }else{
+            isVisible = false;
+          }
+           
             if(ground === 2){
 
                 let position = {
@@ -48,9 +61,9 @@ function buildLevel(game,level,catterpilar) {
                 };
 
 
-                grounds.push(new Catterpilar(game,position));
+                grounds.push(new Catterpilar(game,position,isVisible));
                 
-
+                isVisible = false;  
             }
             rowIndex = thisRowIndex;
         });

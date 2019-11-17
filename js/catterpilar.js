@@ -1,13 +1,13 @@
 class Catterpilar{
     
-    constructor(game,position){
+    constructor(game,position,isHide){
 
         this.game = game;
 
         this.image = document.getElementById("img_catterpilar");
 
         this.position = position;
-        this.isHide = false;
+        this.isHide = isHide;
 
         this.width = 30;
         this.height = 30;
@@ -16,14 +16,19 @@ class Catterpilar{
 
     update(deltaTime){
 
+        if(!this.isHide) return;
+
         if(CollisionDetection(this.game.player,this)){
             this.position.x = -this.position.x;
             this.game.player.plusHeath(5);
+            this.changeHide();
         }
 
     }
 
     draw(ctx){
+
+        if(!this.isHide) return;
 
         ctx.drawImage(
             this.image,
@@ -37,12 +42,7 @@ class Catterpilar{
 
     physics(){} //Nothing
 
-    writeHide(){
-        if(this.position.x < 0){
-            this.isHide = true;
-        }else{
-            this.isHide = false;
-        }
-        console.log(this.isHide);
+    changeHide(){
+        this.isHide = (!this.isHide);
     }
 }
