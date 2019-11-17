@@ -1,3 +1,8 @@
+@font-face {
+    src: url(/media/fonts/14133.otf);
+    font-family: myFont;
+}
+
 html,body
 {
     padding: 0;
@@ -7,6 +12,7 @@ html,body
 *
 {
     box-sizing: border-box;
+    font-family: myFont;
 }
 
 body
@@ -30,4 +36,41 @@ canvas
     margin: 0 auto;
     display: block;
     border: 1px solid black;
+}
+
+.info{
+    text-align: center;
+    position: relative;
+    margin: auto;
+    height: 30px;
+    width: 125px;
+
+}
+
+.info.inputName{
+    height: 30px;
+    width: 200px;
+}
+
+input{
+    text-align: center;
+    height: 30px;
+    width: 200px;
+    font-family: myFont;
+    border-color: black;
+    border-radius: 10px;
+}
+
+.info.btn{
+    margin-top: 15px;
+    height: 30px;
+    width: 175px;
+
+}
+
+#this-btn_start{
+    width: 175px;
+    height: 30px;
+    border-color: black;
+    border-radius: 10px;
 }
