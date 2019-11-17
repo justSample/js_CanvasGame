@@ -12,6 +12,7 @@ class Game{
         //Расширение canvas
         this.gameWidth = gameWidth;
         this.gameHeight = gameHeight;
+        this.playerName = document.getElementById("playerName").textContent;
 
         this.gameObjects = [];
 
@@ -54,7 +55,7 @@ class Game{
 
         setInterval(() => {
             this.timer.clock();
-            this.player.Health -= 1;
+            this.player.minusHealth(1);
         },1000);
 
         //Нажатие клавишь
@@ -80,7 +81,7 @@ class Game{
         //Отображение
         if(this.gameState == GAME_STATE.RUNNING){
             //Фона
-            ctx.rect(0,0,110,50);
+            ctx.rect(0,0,160,80);
             ctx.fillStyle = "rgba(0,0,0,1)";
             ctx.fill();
             
@@ -88,13 +89,20 @@ class Game{
             ctx.font = "16px Arial";
             ctx.fillStyle = "white";
             ctx.textAlign = "left";
-            ctx.fillText("Min: " + this.timer.Time.min + " : Sec: " + this.timer.Time.sec,0, 16);
+            ctx.fillText("Name: " + this.playerName,0, 16);
             
             //Здоровья игрока
             ctx.font = "16px Arial";
             ctx.fillStyle = "white";
             ctx.textAlign = "left";
+
             ctx.fillText("HP: " + this.player.Health,0, 40);
+
+            //Имя игрока
+            ctx.font = "16px Arial";
+            ctx.fillStyle = "white";
+            ctx.textAlign = "left";
+            ctx.fillText("Min: " + this.timer.Time.min + " : Sec: " + this.timer.Time.sec,0, 64);
 
         }
     }

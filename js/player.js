@@ -217,4 +217,21 @@ class Player{
 
     }
 
+    minusHealth(num){
+
+        if((this.Health - num) < 0){
+            this.Health = 0;
+            //TO DO some
+        }else{
+            this.Health -= num;
+        }
+
+    }
+
+    Dead(){
+
+        
+
+    }
+
 }
