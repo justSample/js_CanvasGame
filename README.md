@@ -1,3 +1,6 @@
 # js_CanvasGame
-Just canvas game 
-game version 0.5
+Just canvas game
+
+```
+Game version 0.5
+```
