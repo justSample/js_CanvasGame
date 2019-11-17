@@ -1,8 +1,18 @@
 let btn = document.getElementById("this-btn_start");
+let inputText = document.getElementById("inputText");
 let hide = document.getElementsByClassName("info");
 //console.log(hide);
 
 function BeginPlay() {
+
+    
+    if(inputText.value.length <= 2) {
+        alert("Имя должно быть больше 3-ёх символов");
+        return;
+    }else if(inputText.value.length >= 10){
+        alert("Имя должно быть меньше 10-ти символов");
+        return;
+    }
 
     for(let i = 0;i != hide.length;){
         console.log(hide);
