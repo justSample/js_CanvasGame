@@ -9,14 +9,16 @@ class Input{
                     player.moveLeft();  
                     break;
                 case 38:    //Arrow Up
-                    player.jump();
+                    if(!player.PlayerHide)
+                        player.jump();
+                    else
+                        player.unHide();
                     break;
                 case 39:    //Arrow Right
                     player.moveRight();  
                     break;
                 case 40:    //Arrow Down
                     player.hide();
-
                     break;
                 case 27:    //Escape
                     game.togglePause();

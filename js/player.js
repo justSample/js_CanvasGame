@@ -178,7 +178,14 @@ class Player{
     }
 
     hide(){
-        this.PlayerHide = !this.PlayerHide;
+        if(!this.PlayerHide)
+            if(!this.isJump)
+                this.PlayerHide = !this.PlayerHide;
+    }
+
+    unHide(){
+        if(this.PlayerHide)
+            this.PlayerHide = !this.PlayerHide;
     }
 
     
