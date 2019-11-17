@@ -19,6 +19,9 @@ class Enemy{
             this.imageRunLeft
         ]
 
+        this.ticksAttack = 0;
+        this.firstAttack = true;
+
         //Контроль анимации
         this.frameIndex = 0; //Номер фрейма
         this.tickCount = 0; //Кол-во обновлений прошедшие с первого выхода
@@ -67,6 +70,8 @@ class Enemy{
             this.changeDirection();
         }
 
+        this.enemyAttack();
+
         this.animationsNumberFrameUpdate();
         this.enemyStateUpdate();
         
@@ -112,6 +117,34 @@ class Enemy{
 
     changeDirection(){
         this.speed = -this.speed;
+    }
+
+    enemyAttack(){
+
+
+        if(CollisionDetection(this.game.player,this)){
+
+            if(this.firstAttack){
+                this.game.player.minusHealth(10);
+                this.firstAttack = false;
+            }
+
+            if(this.ticksAttack >= 60){
+                this.ticksAttack = 0;
+            }else{
+                this.ticksAttack++;
+            }
+            console.log(this.ticksAttack);
+            
+            if(this.ticksAttack === 60 || this.ticksAttack === 0){
+                this.game.player.minusHealth(10);
+                this.ticksAttack = 0;
+            }
+            }else{
+                this.ticksAttack = 0;
+                this.firstAttack = true;
+            }
+
     }
 
 }
