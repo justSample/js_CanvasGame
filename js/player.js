@@ -61,6 +61,7 @@ class Player{
         this.speed = 0;
 
         this.Health = 100;
+        this.CollectCatterpilar = 0;
 
         this.isJump = false;
 
@@ -221,7 +222,7 @@ class Player{
 
         if((this.Health - num) < 0){
             this.Health = 0;
-            //TO DO some
+            this.game.start();
         }else{
             this.Health -= num;
         }
@@ -230,7 +231,7 @@ class Player{
 
     Dead(){
 
-        
+        this.game.start();
 
     }
 

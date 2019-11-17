@@ -82,29 +82,37 @@ class Game{
 
         //Отображение
         if(this.gameState == GAME_STATE.RUNNING){
-            //Фона
-            ctx.rect(0,0,160,80);
+
+            //background
+            ctx.rect(0,0,160,90);
             ctx.fillStyle = "rgba(0,0,0,1)";
             ctx.fill();
             
-            //Времени
-            ctx.font = "16px Arial";
+            //Player name
+            ctx.font = "16px myFont";
             ctx.fillStyle = "white";
             ctx.textAlign = "left";
             ctx.fillText("Name: " + this.playerName,0, 16);
             
-            //Здоровья игрока
-            ctx.font = "16px Arial";
+            //Health
+            ctx.font = "16px myFont";
             ctx.fillStyle = "white";
             ctx.textAlign = "left";
-
             ctx.fillText("HP: " + this.player.Health,0, 40);
 
-            //Имя игрока
-            ctx.font = "16px Arial";
+            //Catterpilar
+            ctx.font = "16px myFont";
             ctx.fillStyle = "white";
             ctx.textAlign = "left";
-            ctx.fillText("Min: " + this.timer.Time.min + " : Sec: " + this.timer.Time.sec,0, 64);
+            ctx.fillText("Гусеницы: " + this.player.CollectCatterpilar,0, 64);
+
+            //Time
+            ctx.font = "16px myFont";
+            ctx.fillStyle = "white";
+            ctx.textAlign = "left";
+            ctx.fillText("Min: " + this.timer.Time.min + " : Sec: " + this.timer.Time.sec,0, 88);
+
+
 
         }
     }

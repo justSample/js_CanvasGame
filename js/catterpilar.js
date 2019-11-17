@@ -20,6 +20,7 @@ class Catterpilar{
 
         if(CollisionDetection(this.game.player,this)){
             this.game.player.plusHeath(5);
+            this.game.player.CollectCatterpilar++;
             this.changeHide();
         }
 
