@@ -19,7 +19,6 @@ class Catterpilar{
         if(this.isHide) return;
 
         if(CollisionDetection(this.game.player,this)){
-            this.position.x = -this.position.x;
             this.game.player.plusHeath(5);
             this.changeHide();
         }
@@ -43,7 +42,10 @@ class Catterpilar{
     physics(){} //Nothing
 
     changeHide(){
-        this.isHide = (!this.isHide);
+        if(this.isHide)
+            this.isHide = false;
+        else
+            this.isHide = true;
     }
 
 }
