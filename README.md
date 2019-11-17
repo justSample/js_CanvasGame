@@ -2,5 +2,5 @@
 Just canvas game
 
 ```
-Game version 0.5
+Game version 0.8
 ```
