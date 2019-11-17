@@ -16,7 +16,7 @@ class Catterpilar{
 
     update(deltaTime){
 
-        if(!this.isHide) return;
+        if(this.isHide) return;
 
         if(CollisionDetection(this.game.player,this)){
             this.position.x = -this.position.x;
@@ -28,7 +28,7 @@ class Catterpilar{
 
     draw(ctx){
 
-        if(!this.isHide) return;
+        if(this.isHide) return;
 
         ctx.drawImage(
             this.image,
@@ -45,4 +45,5 @@ class Catterpilar{
     changeHide(){
         this.isHide = (!this.isHide);
     }
+
 }

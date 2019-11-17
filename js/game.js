@@ -21,6 +21,9 @@ class Game{
         this.HP = 100;
         this.score = 0;
 
+        this.catterpilarHide = [];
+        this.catterpilarVisible = 0;
+
         //document.getElementById("backgroundMusic").play();
 
         //Пока что старт игры
@@ -37,14 +40,14 @@ class Game{
 
 
         let grounds = buildLevel(this,MyLevel);
-        /* Nothing. You dont't see this!.
-        this.grounds = grounds.filter( function(obj) {
+        
+        this.catterpilar = grounds.filter( function(obj) {
                 if(obj.isHide === false || obj.isHide === true)
                     return obj;
                 else
                     return null;
         }  )
-        */
+
 
         this.gameObjects =[
             this.background,
@@ -69,8 +72,7 @@ class Game{
 
         this.gameObjects.forEach((object) => object.update(deltaTime));
 
-        //this.grounds.forEach((obj) => obj.writeHide()); //This you don't see again!.
-
+        this.updateCatterpilar();
     }
 
     draw(ctx)
@@ -123,6 +125,32 @@ class Game{
         }else if(this.gameState === GAME_STATE.PAUSED){
             this.gameState = GAME_STATE.RUNNING;
         }
+
+    }
+
+    //Следит за кол-вом на экране
+    updateCatterpilar(){
+
+        for(let i = 0;i < this.catterpilar.length;i++){
+
+            if(!this.catterpilar[i].isHide){
+                this.catterpilarVisible++;
+            }
+
+        }
+
+        let randomCatterpilar = (getRandomNumber(0,this.catterpilar.length));
+        while(!this.catterpilar[randomCatterpilar].isHide){
+
+            randomCatterpilar = (getRandomNumber(0,this.catterpilar.length));
+
+        }
+        if(this.catterpilarVisible < 2){
+            this.catterpilar[randomCatterpilar].changeHide();
+            this.catterpilarVisible++;
+        }
+
+        this.catterpilarVisible = 0;
 
     }
 

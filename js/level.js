@@ -40,17 +40,17 @@ function buildLevel(game,level,catterpilar) {
             ground = 2;
 
           }
-          var isVisible = true;
+          var isHide = true;
           let rdmNumber = getRandomNumber(0,2);
           if(rdmNumber == 1){
             if(visibleCatter < 2){
-            isVisible = true;
+                isHide = false;
             visibleCatter++;
             }else{
-                isVisible = false;
+                isHide = true;
             }
           }else{
-            isVisible = false;
+            isHide = true;
           }
            
             if(ground === 2){
@@ -61,9 +61,9 @@ function buildLevel(game,level,catterpilar) {
                 };
 
 
-                grounds.push(new Catterpilar(game,position,isVisible));
+                grounds.push(new Catterpilar(game,position,isHide));
                 
-                isVisible = false;  
+                isHide = true;  
             }
             rowIndex = thisRowIndex;
         });

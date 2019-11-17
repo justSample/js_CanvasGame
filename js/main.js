@@ -20,7 +20,6 @@ function BeginPlay() {
     }
 
     for(let i = 0;i != hide.length;){
-        console.log(hide);
         hide[i].parentNode.removeChild(hide[i]);
     }
 
