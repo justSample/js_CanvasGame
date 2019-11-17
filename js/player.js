@@ -257,6 +257,9 @@ class Player{
     Dead(){
         FirstTime = false;
 
+        this.game.music.pause();
+        this.game.music.currentTime = 0; 
+
         this.game.gameState = GAME_STATE.GAME_OVER;
 
         let canvas = document.getElementById("gameScreen");
@@ -287,6 +290,9 @@ class Player{
     Win(){
 
         FirstTime = false;
+
+        this.game.music.pause();
+        this.game.music.currentTime = 0; 
 
         this.game.gameState = GAME_STATE.GAME_OVER;
 
