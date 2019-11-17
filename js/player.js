@@ -140,6 +140,11 @@ class Player{
         //Чтобы не выходил за пределы экрана слева
         if(this.position.x <= 0 ) this.position.x = 0;
 
+        if(this.position.x >= this.game.gameWidth){
+            this.position.x = 0;
+            this.Win();
+        }
+
     }
 
     physics()
@@ -241,6 +246,37 @@ class Player{
 
         discription.className = "info gameName";
         discription.innerHTML = "Вы проиграли! </br> Хотите сыграть ещё?";
+
+        document.body.appendChild(discription);
+
+        let divBtn = document.createElement('div');
+
+        divBtn.className = "info btn";
+        document.body.appendChild(divBtn);
+
+        let btn = document.createElement('button');
+
+        btn.id = "this-btn_start";
+        btn.innerHTML = "Start again!";
+
+        btn.onclick = BeginPlay;
+        
+        divBtn.appendChild(btn);
+    }
+
+    Win(){
+
+        FirstTime = false;
+
+        this.game.gameState = GAME_STATE.GAME_OVER;
+
+        let canvas = document.getElementById("gameScreen");
+        canvas.parentNode.removeChild(canvas);
+
+        let discription = document.createElement('div');
+
+        discription.className = "info gameName";
+        discription.innerHTML = " "+ this.game.playerName +", Вы выйграли! </br> Так же, вы поймали "+ this.CollectCatterpilar +" гусенечек. </br> Хотите сыграть ещё?";
 
         document.body.appendChild(discription);
 

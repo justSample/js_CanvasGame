@@ -73,30 +73,33 @@ canvas
 }
 
 .info.inputName{
-    height: 30px;
-    width: 200px;
+    height: 50px;
+    width: 250px;
 }
 
 input{
     text-align: center;
-    height: 30px;
-    width: 200px;
+    margin-top: 25px;
+    height: 50px;
+    width: 250px;
     font-family: myFont;
+    font-size: 24px;
     border-color: black;
-    border-radius: 10px;
+    border-radius: 36px;
 }
 
 
 .info.btn{
-    margin-top: 15px;
-    height: 30px;
-    width: 175px;
+    margin-top: 50px;
+    height: 50px;
+    width: 250px;
 
 }
 
 #this-btn_start{
-    width: 175px;
-    height: 30px;
+    width: 250px;
+    font-size: 36px;
+    height: 50px;
     border-color: black;
-    border-radius: 10px;
+    border-radius: 36px;
 }
