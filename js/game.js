@@ -87,13 +87,26 @@ class Game{
         this.gameObjects.forEach((object) => object.draw(ctx));
 
         //Отображение
-        if(this.gameState != GAME_STATE.GAME_OVER){
+        if(this.gameState === GAME_STATE.PAUSED){
 
             //background
-            ctx.rect(0,0,160,90);
-            ctx.fillStyle = "rgba(0,0,0,1)";
+            ctx.rect(0,0,this.gameWidth,this.gameHeight);
+            ctx.fillStyle = "rgba(0,0,0,0.5)";
             ctx.fill();
+
+            ctx.font = "30px Arial";
+            ctx.fillStyle = "white";
+            ctx.textAlign = "center";
+            ctx.fillText("Paused",this.gameWidth / 2, this.gameHeight / 2);
+
+            console.log("Check");
             
+        }
+
+        //Отображение
+        if(this.gameState === GAME_STATE.RUNNING ||
+            this.gameState === GAME_STATE.PAUSED){
+
             //Player name
             ctx.font = "16px myFont";
             ctx.fillStyle = "white";
@@ -117,10 +130,8 @@ class Game{
             ctx.fillStyle = "white";
             ctx.textAlign = "left";
             ctx.fillText("Min: " + this.timer.Time.min + " : Sec: " + this.timer.Time.sec,0, 88);
-
-
-
         }
+
     }
 
     physics(){
