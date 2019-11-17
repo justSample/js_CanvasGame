@@ -53,6 +53,8 @@ class Player{
 
         this.game = game;
 
+        this.PlayerHide = false;
+
         //fix me
         this.gameWidth = game.gameWidth / this.numberOfFrames;
         this.gameHeight = game.gameHeight;
@@ -92,6 +94,8 @@ class Player{
 
     draw(ctx){
 
+        if(this.PlayerHide) return;
+
         //Отрисовка кадров
         ctx.drawImage(
             this.Animations[this.playerState], //Какой именно изображение 
@@ -107,6 +111,8 @@ class Player{
     }
 
     update(deltaTime){
+
+        if(this.PlayerHide) return;
 
         //Update animations
         this.playerStateUpdate();
@@ -149,6 +155,7 @@ class Player{
 
     physics()
     {
+        if(this.PlayerHide) return;
         //Записывается позиция до воздействия физики и update
         this.xPrev = this.position.x;
         this.yPrev = this.position.y;
@@ -169,6 +176,12 @@ class Player{
             this.isJump = true;
         }
     }
+
+    hide(){
+        this.PlayerHide = !this.PlayerHide;
+    }
+
+    
 
     animationsNumberFrameUpdate(){
 

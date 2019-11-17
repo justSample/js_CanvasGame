@@ -15,7 +15,8 @@ class Input{
                     player.moveRight();  
                     break;
                 case 40:    //Arrow Down
-                    console.log("Down");
+                    player.hide();
+
                     break;
                 case 27:    //Escape
                     game.togglePause();
