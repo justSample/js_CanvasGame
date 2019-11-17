@@ -24,7 +24,7 @@ class Game{
         this.catterpilarHide = [];
         this.catterpilarVisible = 0;
 
-        //document.getElementById("backgroundMusic").play();
+        this.music = document.getElementById("backgroundMusic");
 
         //Пока что старт игры
         this.start();
@@ -68,6 +68,9 @@ class Game{
 
         //Нажатие клавишь
         new Input(this.player,this);
+       
+        this.music.volume = 0.05;
+        this.music.play();
 
     }
 
