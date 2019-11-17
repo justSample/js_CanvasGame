@@ -28,7 +28,7 @@ class Enemy{
         this.width = this.Animations[this.enemyState].width / this.numberOfFrames;
         this.height = this.Animations[this.enemyState].height;
 
-        this.speed = 25;
+        this.speed = 1;
 
         this.position = {
             x: 100,
@@ -55,7 +55,7 @@ class Enemy{
             }
         }
 
-        this.position.x += (this.speed / deltaTime);
+        this.position.x += this.speed;
 
         //Чтобы не выходил за пределы экрана слева
         if(this.position.x < 0 ) {
@@ -102,10 +102,10 @@ class Enemy{
 
     enemyStateUpdate(){
 
-        if(this.speed === 25){
+        if(this.speed === 1){
             this.enemyState = ENEMY_STATE.RUN_RIGHT;
         }
-        else if(this.speed === -25){
+        else if(this.speed === -1){
             this.enemyState = ENEMY_STATE.RUN_LEFT;
         }
     }
