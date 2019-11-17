@@ -122,7 +122,7 @@ class Enemy{
     enemyAttack(){
 
 
-        if(CollisionDetection(this.game.player,this)){
+        if(CollisionDetection(this.game.player,this) && !this.game.player.PlayerHide){
 
             if(this.firstAttack){
                 this.game.player.minusHealth(30);
