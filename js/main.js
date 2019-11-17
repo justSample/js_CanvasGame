@@ -1,6 +1,6 @@
 let btn = document.getElementById("this-btn_start");
 let inputText = document.getElementById("inputText");
-let hide = document.getElementsByClassName("info");
+let hide = document.getElementsByTagName('div');
 //console.log(hide);
 
 function BeginPlay() {
