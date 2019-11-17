@@ -57,7 +57,7 @@ class Player{
         this.gameWidth = game.gameWidth / this.numberOfFrames;
         this.gameHeight = game.gameHeight;
 
-        this.maxSpeed = 3;
+        this.maxSpeed = 5;
         this.speed = 0;
 
         this.Health = 100;
@@ -159,7 +159,7 @@ class Player{
     jump()
     {
         if(!this.isJump){
-            this.dy += -10.2;
+            this.dy += -10.6;
             this.isJump = true;
         }
     }
